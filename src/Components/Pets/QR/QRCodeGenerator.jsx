@@ -53,7 +53,7 @@ const QRCodeGenerator = ({ petId }) => {
       })
       .catch((error) => {
         message.error('Error al descargar el código QR.');
-        console.error('Error al generar la imagen PNG:', error);
+       
       });
   };
 

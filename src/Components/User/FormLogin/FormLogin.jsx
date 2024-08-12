@@ -39,7 +39,7 @@ const FormLogin = () => {
     },
     onError: (e) => {
       Swal.close();
-      console.log(e);
+    
       toast.error(e.message || "Error desconocido");
     },
   });

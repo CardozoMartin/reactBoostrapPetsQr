@@ -14,7 +14,7 @@ const Commets = () => {
     isLoading,
   } = useQuery({ queryKey: ['commets'], queryFn: getCommetFn });
 
-  console.log("Data received from API:", data);
+  
 
   if (isError) {
     return <ErrorAlert></ErrorAlert>;

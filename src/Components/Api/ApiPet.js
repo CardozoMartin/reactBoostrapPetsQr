@@ -1,7 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const postPetFn = async (data) => {
-  console.log(data);
   const formData = new FormData();
   formData.append("name", data.name);
   formData.append("tipo", data.tipo);
