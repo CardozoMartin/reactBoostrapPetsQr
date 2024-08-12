@@ -62,7 +62,7 @@ const FormLogin = () => {
         className='mb-2 '
         options={{
           minLength: 3,
-          maxLength: 25,
+          maxLength: 100,
           required: true,
         }}
       />
@@ -79,7 +79,7 @@ const FormLogin = () => {
         className='mb-2'
         options={{
           minLength: 3,
-          maxLength: 25,
+          maxLength: 50,
           required: true,
         }}
       />
