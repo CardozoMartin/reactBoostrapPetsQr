@@ -60,7 +60,7 @@ const FormCommets = () => {
             <div className="container my-5">
                 <div className="row">
                     <div className="col-lg-5 mb-4">
-                        <div className="text-center">
+                        <div className="text-center d-none d-md-block"> {/* Oculta la imagen en pantallas pequeñas */}
                             <img src={imgQR} alt="qr" />
                         </div>
                     </div>
@@ -85,7 +85,7 @@ const FormCommets = () => {
                                     />
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="" className="mt-5">Ingresa la imagen de tu mascota</label>
+                                    <label htmlFor="" className="mt-5">Ingresa la imagen de tu mascota, si ya tiene el collar con el codigo mucho mejor</label>
                                     <ImageUpload onImageSelect={handleImageChange} />
                                     {imageError && (
                                         <div className="invalid-feedback d-block">

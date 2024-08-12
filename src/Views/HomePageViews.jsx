@@ -8,6 +8,7 @@ import FormCommets from "../Components/User/Comments/FormComents/FormComments";
 import Commets from "../Components/User/Comments/Comments";
 import Contact from "../Components/User/Contact/Contact";
 import { useSession } from "../Components/Store/UseSession";
+import { Link } from "react-router-dom";
 const HomePageViews = () => {
   const { isLoggedIn, logout, user } = useSession();
 
@@ -28,9 +29,9 @@ const HomePageViews = () => {
                     nuestro QR para mascotas.
                   </h2>
                   <div className="text-center text-lg-start">
-                    <a href="#about" className="btn-get-started scrollto">
+                    <Link to={"/register"} className="btn-get-started scrollto">
                       Registrate
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -13,7 +13,7 @@ const PetCard = (props) => {
   // Verificar si no hay mascotas para mostrar
   if (filterPetId.length === 0) {
     return (
-      <div className="container mt-4 aler alert-primary text-centern">
+      <div className="container mt-4 aler alert-primary text-center">
         <i className="bi bi-exclamation-triangle" style={{ fontSize: '50px', color: 'red' }}></i>
         <p className="text-center">Todavia no cargaste ninguna mascota</p>
       </div>
