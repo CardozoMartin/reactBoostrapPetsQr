@@ -15,6 +15,7 @@ const FormPets = () => {
   const { pet, clearPet } = usePet();
   const [image, setImage] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [imageError, setImageError] = useState('');
 
   useEffect(() => {
     if (pet) {
@@ -70,6 +71,11 @@ const FormPets = () => {
   });
 
   const onSubmit = async (data) => {
+    if (!image) {
+      setImageError('Por favor, selecciona una imagen antes de enviar.');
+      return;
+    }
+
     Swal.showLoading();
 
     const petData = {
@@ -91,6 +97,7 @@ const FormPets = () => {
 
   const handleImageChange = (newImage) => {
     setImage(newImage);
+    setImageError(''); // Clear the error when an image is selected
   };
 
   return (
@@ -170,6 +177,11 @@ const FormPets = () => {
               </div>
               <div className="col-12">
                 <ImageUpload onImageSelect={handleImageChange} />
+                {imageError && (
+                  <div className="invalid-feedback d-block">
+                    {imageError}
+                  </div>
+                )}
               </div>
               <div className="col-12 col-md-6">
                 <label htmlFor="direccion" className="form-label">Dirección</label>
