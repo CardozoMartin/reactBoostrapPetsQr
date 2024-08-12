@@ -1,0 +1,21 @@
+.error-alert {
+    padding: 20px;
+    border: 1px solid #d9534f;
+    border-radius: 5px;
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  .error-alert h4 {
+    font-size: 1.5rem;
+  }
+  .error-alert p {
+    font-size: 1rem;
+  }
+  .error-alert .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  .error-alert .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

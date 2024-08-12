@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  font-family: 'DM Sans', Arial;
+}
+
+a{
+  text-decoration: none;
+}
+
+#root {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.active{
+  color: yellow;
+}
+main {
+  
+  margin-bottom: 25px;
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+.btn-ig{
+  background-color: rgb(95, 14, 170);
+  color: white;
+}
+.btn-ig:hover{
+  background-color: rgb(95, 14, 170);
+  color: black;
+}
+
+
+.img-fixed-size {
+  width: 400px; /* Cambia el tamaño según tus necesidades */
+  height: 250px; /* Cambia el tamaño según tus necesidades */
+  object-fit: cover; /* Mantiene la proporción de la imagen dentro del contenedor */
+}
+.cardC{
+  width: 18rem;
+}
