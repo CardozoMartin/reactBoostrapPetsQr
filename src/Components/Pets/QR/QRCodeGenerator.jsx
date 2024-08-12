@@ -3,7 +3,7 @@ import { Button, message } from 'antd';
 import QRCode from 'react-qr-code';
 
 const QRCodeGenerator = ({ petId }) => {
-  const baseUrl = 'http://localhost:5173/pet-details';
+  const baseUrl = 'https://petsqr.netlify.app/pet-details';
 
   if (!petId) {
     return <div>El ID de la mascota es inválido.</div>;
