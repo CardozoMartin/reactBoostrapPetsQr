@@ -67,9 +67,10 @@ const CardPetViews = () => {
               <h4 className="mt-4">INFORMACION DE CONTACTO</h4>
               <ButtonGroup pet={pet} />
               <div className="">
-                <button className='btn btn-ig'  href={`https://www.instagram.com/${pet.data.instagram}/`} target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-instagram"></i> Instagram
-                </button>
+                <a className='btn btn-ig'  href={`https://www.instagram.com/${pet.data.instagram}/`} target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-instagram">
+                    </i> Instagram
+                </a>
               </div>
               <p className="mt-3 font-weight-bold">Dirección: {pet.data.direccion}</p>
             </div>
