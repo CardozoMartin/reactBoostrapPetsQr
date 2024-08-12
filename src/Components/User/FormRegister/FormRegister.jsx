@@ -60,7 +60,7 @@ const FormRegister = () => {
           className="mb-2"
           options={{
             minLength: { value: 3, message: "Debe tener al menos 3 caracteres" },
-            maxLength: { value: 25, message: "Debe tener como máximo 25 caracteres" },
+            maxLength: { value: 100, message: "Debe tener como máximo 25 caracteres" },
             required: "Este campo es obligatorio",
           }}
         />
@@ -80,7 +80,7 @@ const FormRegister = () => {
             className="mb-2"
             options={{
               minLength: { value: 3, message: "Debe tener al menos 3 caracteres" },
-              maxLength: { value: 25, message: "Debe tener como máximo 25 caracteres" },
+              maxLength: { value: 50, message: "Debe tener como máximo 25 caracteres" },
               required: "Este campo es obligatorio",
             }}
           />
