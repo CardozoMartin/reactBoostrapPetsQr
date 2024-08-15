@@ -22,7 +22,7 @@ const LoginPageViews = () => {
                  <FormLogin></FormLogin>
                  
                   
-                 <p>Ahun no tienes una cuenta ? <Link to={"/register"}>Registrate</Link></p>
+                 <p className=' bolder '>no tenes cuenta? <Link to={"/register"} className='fs-5 bolder'>Registrate</Link></p>
                 </div>
               </div>
             </div>
