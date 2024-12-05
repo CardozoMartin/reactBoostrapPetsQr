@@ -85,7 +85,7 @@ const FormCommets = () => {
                                     />
                                 </div>
                                 <div className="mb-4">
-                                    <label htmlFor="" className="mt-5">Ingresa la imagen de tu mascota, si ya tiene el collar con el codigo mucho mejor</label>
+                                    <label htmlFor="" className="mt-5">Sube una foto de tu mascota; si ya lleva puesto el collar con el código, mucho mejor!</label>
                                     <ImageUpload onImageSelect={handleImageChange} />
                                     {imageError && (
                                         <div className="invalid-feedback d-block">
