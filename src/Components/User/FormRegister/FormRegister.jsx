@@ -23,6 +23,16 @@ const FormRegister = () => {
       Swal.close();
       toast.success("Registro exitoso");
 
+      Swal.fire({
+        title: 'Bienvenido a PetLink',
+        icon: 'success',
+        confirmButtonText: 'Iniciar sesión',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+
       login({ ...data, password: undefined });
 
       navigate("/");
