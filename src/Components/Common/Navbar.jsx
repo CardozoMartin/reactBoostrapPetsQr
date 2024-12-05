@@ -15,8 +15,8 @@ const Navbar = () => {
       text: "Estas por salir !",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Si, salir",
-      cancelButtonText: "Cancel",
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
     }).then((res) => {
       if (res.isConfirmed) {
         toast.success("Sesión cerrada con éxito");
