@@ -12,7 +12,7 @@ const Navbar = () => {
   const handleLogout = () => {
     Swal.fire({
       title: "Atencion",
-      text: "Estas por salir !!!",
+      text: "Estas por salir !",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Si, salir",
