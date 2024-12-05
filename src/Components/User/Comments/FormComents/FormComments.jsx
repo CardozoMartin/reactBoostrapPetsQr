@@ -21,7 +21,7 @@ const FormCommets = () => {
         mutationFn: postCommentFn,
         onSuccess: () => {
             Swal.close();
-            toast.success('Muchas gracias por el comentario ♥');
+            toast.success('Gracias por compartir tu opinión  ♥');
             reset();
             setImage(null);
             setImageError('');
