@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../../Utils/input/Input";
 import { useSession } from "../../Store/UseSession";
 import { postUserFn } from "../../Api/ApiUsers";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -52,6 +52,36 @@ const FormRegister = () => {
       </div>
       <div className="form-group">
         <Input
+          label="Nombre"
+          name="name"
+          placeholder="Ingrese su nombre"
+          register={register}
+          error={!!errors?.name}
+          className="mb-2"
+          options={{
+            minLength: { value: 3, message: "Debe tener al menos 3 caracteres" },
+            maxLength: { value: 100, message: "Debe tener como máximo 25 caracteres" },
+            required: "Este campo es obligatorio",
+          }}
+        />
+      </div>
+      <div className="form-group">
+        <Input
+          label="Apellido"
+          name="surname"
+          placeholder="Ingrese su apellido"
+          register={register}
+          error={!!errors?.surname}
+          className="mb-2"
+          options={{
+            minLength: { value: 3, message: "Debe tener al menos 3 caracteres" },
+            maxLength: { value: 100, message: "Debe tener como máximo 25 caracteres" },
+            required: "Este campo es obligatorio",
+          }}
+        />
+      </div>
+      <div className="form-group">
+        <Input
           label="Email"
           name="email"
           placeholder="Ingrese su email"
@@ -93,6 +123,7 @@ const FormRegister = () => {
       >
         Registrarse
       </button>
+      <p className=' bolder '>ya tenes cuenta? <Link to={"/login"} className='fs-5 bolder'>Inicia sesión</Link></p>
       <hr />
     </form>
   );

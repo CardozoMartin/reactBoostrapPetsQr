@@ -100,6 +100,23 @@ const FormPets = () => {
     setImageError(''); // Clear the error when an image is selected
   };
 
+  const handleCancel = () => {
+    Swal.fire({
+      title: '¿Estás seguro de querer cancelar?',
+      text: 'Todos los datos se perderán',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearPet();
+        reset();
+        setIsEditing(false);
+      }
+    });
+  };
+
   return (
     <div className="container card o-hidden border-0 shadow-lg">
       <div className="row justify-content-center">
@@ -247,10 +264,15 @@ const FormPets = () => {
                   }}
                 />
               </div>
-              <div className="col-12 text-center">
+              <div className="col-8 text-center">
                 <button type="submit" className="btn btn-warning w-50">
                   {isEditing ? "Editar" : "Agregar"}
                 </button>
+                {isEditing &&
+                  <button type="button" className="btn btn-danger w-50" onClick={handleCancel}>
+                    Cancelar
+                  </button>
+                }
               </div>
             </form>
           </div>

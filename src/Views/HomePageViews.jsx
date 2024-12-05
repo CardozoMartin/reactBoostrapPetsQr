@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import imgPet from "../img/Home/left.png";
 import imgPet2 from "../img/Home/portrait.png";
 import LoginPageViews from "./LoginPageViews";
@@ -9,11 +9,17 @@ import Commets from "../Components/User/Comments/Comments";
 import Contact from "../Components/User/Contact/Contact";
 import { useSession } from "../Components/Store/UseSession";
 import { Link } from "react-router-dom";
+import imgPet3 from "../img/welcome.svg";
 const HomePageViews = () => {
   const { isLoggedIn, logout, user } = useSession();
-
+  const [isAddPet, setIsAddPet] = useState(false);
+  const [getPet, setGetPet] = useState(false);
+  const [isDatosUser, setIsDatosUser] = useState(false);
+  const [isEditPet, setIsEditPet] = useState(false);
+  console.log(user);
   return (
     <>
+
       {!isLoggedIn &&
         <section id="hero">
           <div className="container">
@@ -21,13 +27,13 @@ const HomePageViews = () => {
               <div className="col-lg-7  pt-lg-0 order-2  order-lg-1 d-flex align-items-center">
                 <div data-aos="zoom-out">
                   <h1>
-                    Conecta con tu mascota de manera fácil y divertida con nuestro{" "}
-                    <span>QR para mascotas!"</span>
+                    Mantén a tu mascota siempre cerca, con solo un escaneo.
+                    <span>El QR que garantiza su seguridad.</span>
                   </h1>
                   <h2>
-                    Haz que tu mascota siempre esté conectada: descubre cómo con
-                    nuestro QR para mascotas.
+                    Conéctate con tu mascota de manera fácil y rápida. Descubre cómo nuestro QR para mascotas puede ofrecerte tranquilidad.
                   </h2>
+
                   <div className="text-center text-lg-start">
                     <Link to={"/register"} className="btn-get-started scrollto">
                       Registrate
@@ -79,8 +85,8 @@ const HomePageViews = () => {
             </g>
           </svg>
         </section>
-    
-}
+
+      }
       {!isLoggedIn &&
 
         <section>
@@ -96,48 +102,48 @@ const HomePageViews = () => {
                   </div>
 
                   <div
-                  className="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
-                  data-aos="fade-left"
-                >
-                  <h3>Sabias que ??</h3>
-                  <p>
-                    El 80% de las mascotas que se pierden sin identificador
-                    nunca regresan a casa !!!
-                  </p>
-
-                  <div
-                    className="icon-box"
-                    data-aos="zoom-in"
-                    data-aos-delay="100"
+                    className="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
+                    data-aos="fade-left"
                   >
-                    <div className="icon">
-                      <i class="bi bi-qr-code"></i>
-                    </div>
-                    <h4 className="title">
-                      <a href="">Codigo QR</a>
-                    </h4>
-                    <p className="description">
-                      Con un simple escaneo, tendrás toda la información de tu mascota al alcance de tu mano. ¡Nunca ha sido tan fácil mantener a tu mascota segura!z
+                    <h3>Sabias que ??</h3>
+                    <p>
+                      El 80% de las mascotas que se pierden sin identificador
+                      nunca regresan a casa !!!
                     </p>
-                  </div>
 
-                  <div
-                    className="icon-box"
-                    data-aos="zoom-in"
-                    data-aos-delay="200"
-                  >
-                    <div className="icon">
-                      <i class="bi bi-person-lines-fill"></i>
+                    <div
+                      className="icon-box"
+                      data-aos="zoom-in"
+                      data-aos-delay="100"
+                    >
+                      <div className="icon">
+                        <i class="bi bi-qr-code"></i>
+                      </div>
+                      <h4 className="title">
+                        <a href="">Codigo QR</a>
+                      </h4>
+                      <p className="description">
+                        Con un simple escaneo, tendrás toda la información de tu mascota al alcance de tu mano. ¡Nunca ha sido tan fácil mantener a tu mascota segura!z
+                      </p>
                     </div>
-                    <h4 className="title">
-                      <a href="">Seguridad y tranquilidad</a>
-                    </h4>
-                    <p className="description">
-                    Si tu mascota se pierde, cualquier persona puede escanear el código QR y ponerse en contacto contigo de inmediato. ¡Recupera a tu mejor amigo más rápido!
-                    </p>
-                  </div>
 
-                    
+                    <div
+                      className="icon-box"
+                      data-aos="zoom-in"
+                      data-aos-delay="200"
+                    >
+                      <div className="icon">
+                        <i class="bi bi-person-lines-fill"></i>
+                      </div>
+                      <h4 className="title">
+                        <a href="">Seguridad y tranquilidad</a>
+                      </h4>
+                      <p className="description">
+                        Si tu mascota se pierde, cualquier persona puede escanear el código QR y ponerse en contacto contigo de inmediato. ¡Recupera a tu mejor amigo más rápido!
+                      </p>
+                    </div>
+
+
 
                     <div
                       className="icon-box"
@@ -162,24 +168,53 @@ const HomePageViews = () => {
         </section>
       }
       {!isLoggedIn &&
-      <section>
-        <LoginPageViews></LoginPageViews>
-      </section>
+        <section>
+          <LoginPageViews></LoginPageViews>
+        </section>
       }
-    
+      {isLoggedIn &&
+        <section>
+          <img src={imgPet3} alt="" className="img-fluid w-25 mx-auto d-block" />
+          <h1 className="text-center fw-bold">Bienvenido {user.name}</h1>
+        </section>
+      }
+
+      {isLoggedIn &&
+        <section className="d-flex justify-content-center">
+
+          {isAddPet ?
+            <button className="btn btn-danger mx-2" onClick={() => { setIsAddPet(false); setGetPet(false) }}>Cerrar</button>
+            :
+            <button className="btn btn-primary mx-2" onClick={() => { setIsAddPet(!isAddPet); setGetPet(false) }}>Agregar mascota</button>
+
+
+          }
+          {getPet ?
+            <button className="btn btn-danger mx-2" onClick={() => { setGetPet(false); setIsAddPet(false) }}>Cerrar</button>
+
+            :
+            <button className="btn btn-primary mx-2" onClick={() => { setGetPet(!getPet) }}>Ver mascotas</button>
+
+          }
+
+        </section>
+      }
+
+
       <section>
-      {isLoggedIn && 
-        <article>
-          <FormPets></FormPets>
-        </article>}
-        {isLoggedIn && 
-        <article>
-          <PetGallery></PetGallery>
-        </article>}
+        {isLoggedIn &&
+          <article>
+            {isAddPet && <FormPets></FormPets>}
+
+          </article>}
+        {isLoggedIn &&
+          <article>
+            {getPet && <PetGallery></PetGallery>}
+          </article>}
 
         <article>
-        {isLoggedIn && 
-          <FormCommets></FormCommets>}
+          {isLoggedIn &&
+            <FormCommets></FormCommets>}
           <Commets></Commets>
         </article>
       </section>

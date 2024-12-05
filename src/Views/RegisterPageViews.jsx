@@ -2,6 +2,7 @@ import React from "react";
 import "../Components/css/sb-admin-2.css";
 import imgRegister from "../img/Register/registerimg.svg";
 import FormRegister from "../Components/User/FormRegister/FormRegister";
+import { Link } from "react-router-dom";
 const RegisterPageViews = () => {
   return (
     <div className="container pt-5">
@@ -19,7 +20,9 @@ const RegisterPageViews = () => {
                 <FormRegister></FormRegister>
                
                
+             
               </div>
+              
             </div>
           </div>
         </div>

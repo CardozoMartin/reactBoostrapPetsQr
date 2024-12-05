@@ -48,21 +48,22 @@ const CardPetViews = () => {
           <div className="bg-light p-4 border rounded">
             <div className="text-center">
               <div className="position-relative">
+
                 <img
                   src={pet.data.image}
-                  className="img-fluid rounded-circle cursor-pointer shadow"
+                  className="img-fluid rounded-circle cursor-pointer shadow img-thumbnail"
                   alt={pet.data.name}
-                  style={{ width: '150px', height: '150px' }}
+                  style={{ width: '250px', height: '250px' }}
                   onClick={openModal}
                 />
               </div>
             </div>
             <div className="text-center mt-4">
               <h1>
-                <small className="text-muted">Me llamo : </small>
+                <small className="text-muted ">Me llamo : </small>
                 {pet.data.name}
               </h1>
-              <p className="text-muted">Raza: {pet.data.raza}</p>
+              <p className="text-muted ">Raza: {pet.data.raza}</p>
               <p className="mt-3">{pet.data.content}</p>
               <h4 className="mt-4">INFORMACION DE CONTACTO</h4>
               <ButtonGroup pet={pet} />
@@ -78,6 +79,7 @@ const CardPetViews = () => {
           </div>
   
           {/* Modal para mostrar la imagen en tamaño completo */}
+          
          
         </div>
       );

@@ -30,3 +30,27 @@ export const getUsersFn = async () => {
   const usersData = await res.json();
   return usersData;
 };
+
+export const deleteUserFn = async (id) => {
+  const token = sessionStorage.getItem("token");
+  const res = await fetch(`${API_URL}/registro/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateUserFn = async (id, data) => {
+  const token = sessionStorage.getItem("token");
+  
+  const res = await fetch(`${API_URL}/registro/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

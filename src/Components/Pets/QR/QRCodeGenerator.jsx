@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, message } from 'antd';
 import QRCode from 'react-qr-code';
+import { Link } from 'react-router-dom';
 
 const QRCodeGenerator = ({ petId }) => {
-  const baseUrl = 'https://petsqr.netlify.app/pet-details';
+  const baseUrl = 'http://localhost:5173/pet-details';
 
   if (!petId) {
     return <div>El ID de la mascota es inválido.</div>;
@@ -31,12 +32,14 @@ const QRCodeGenerator = ({ petId }) => {
 
   return (
     <div>
+      <Link to={generateUrlWithId()}>
       <div style={{ marginTop: '20px' }} id="qr-code">
         <QRCode value={generateUrlWithId()} size={160} />
       </div>
       <Button type="primary" onClick={downloadQRCode} style={{ marginTop: '20px' }}>
         Descargar Código QR
       </Button>
+      </Link>
     </div>
   );
 };

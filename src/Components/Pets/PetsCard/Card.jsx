@@ -5,10 +5,12 @@ import Swal from "sweetalert2";
 import { toast } from "sonner";
 import QRCodeGenerator from "../QR/QRCodeGenerator";
 import "../../css/card.css"
+import { useState } from "react";
 
 const Card = (props) => {
   const { pet } = props;
   const { setPetToEdit } = usePet();
+  const [isQR, setIsQR] = useState(false);
   const queryClient = useQueryClient();
 
   // Función para eliminar una mascota
@@ -75,7 +77,13 @@ const Card = (props) => {
             >
               Editar
             </button>
-            <QRCodeGenerator petId={pet.id} />
+            <button
+              className="btn btn-info mx-2"
+              onClick={() => setIsQR(!isQR)}
+            >
+              QR
+            </button>
+            {isQR && <QRCodeGenerator petId={pet.id} />}
             
           </div>
         </div>
