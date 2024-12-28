@@ -9,13 +9,13 @@ const RegisterPageViews = () => {
       <div className="card o-hidden border-0 shadow-lg my-5">
         <div className="card-body p-0">
           <div className="row">
-            <div className="col-lg-5 d-none d-lg-block bg-register-image ">
+            <div className="col-lg-5 d-none d-lg-block bg-register-image mt-5 ">
               <img src={imgRegister} alt="imagen de registro" className="" />
             </div>
             <div className="col-lg-7">
               <div className="p-5">
                 <div className="text-center">
-                  <h1 className="h4 text-gray-900 mb-4 fw-bold">Registro</h1>
+                  <h1 className=" text-gray-900 fs-1 mb-4 fw-bold">Registro</h1>
                 </div>
                 <FormRegister></FormRegister>
                

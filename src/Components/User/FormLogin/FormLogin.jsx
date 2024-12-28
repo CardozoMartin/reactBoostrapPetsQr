@@ -47,6 +47,7 @@ const FormLogin = () => {
   const onSubmit = (data) => {
     if (!isLoading) {
       Swal.showLoading();
+      console.log(data)
       postLogin(data);
     }
   };
@@ -54,18 +55,20 @@ const FormLogin = () => {
     <form className="user"  onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group">
       <Input
-        label='Nombre de usuario'
-        name='email'
-        placeholder='Ingrese su email'
-        register={register}
-        error={!!errors?.email}
-        className='mb-2 '
-        options={{
-          minLength: 3,
-          maxLength: 100,
-          required: true,
-        }}
-      />
+          label="Email"
+          name="email"
+          placeholder="Ingrese su email"
+          register={register}
+          error={errors?.email}
+          className="mb-2"
+          options={{
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: "El email no es válido",
+            minLength: { value: 3, message: "Debe tener al menos 3 caracteres" },
+            maxLength: { value: 100, message: "Debe tener como máximo 25 caracteres" },
+            required: "Este campo es obligatorio",
+          }}
+        />
         
       </div>
       <div className="form-group">
@@ -75,12 +78,14 @@ const FormLogin = () => {
         name='password'
         placeholder=''
         register={register}
-        error={!!errors?.password}
+        error={errors.password}
         className='mb-2'
         options={{
           minLength: 3,
           maxLength: 50,
           required: true,
+          required: "Este campo es obligatorio",
+
         }}
       />
       </div>

@@ -15,14 +15,12 @@ const PetGallery = () => {
   if (isError) {
     return <ErrorAlert />;
   }
-  
+
   return (
     <>
       {isLoading ? (
         <div className="text-center mt-3 d-flex m-5">
-          
           <PetCardSkeleton />
-          
         </div>
       ) : (
         <>
@@ -33,5 +31,6 @@ const PetGallery = () => {
     </>
   );
 };
+
 
 export default PetGallery;

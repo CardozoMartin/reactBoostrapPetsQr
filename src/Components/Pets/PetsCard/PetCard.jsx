@@ -1,6 +1,7 @@
 
 import { useSession } from "../../Store/UseSession";
 import Card from "./Card";
+import EmblaCarousel from "./Carrusel/EmblaCarousel";
 
 const PetCard = (props) => {
   const { pet } = props;
@@ -15,23 +16,21 @@ const PetCard = (props) => {
     return (
       <div className="container mt-4 aler alert-primary text-center">
         <i className="bi bi-exclamation-triangle" style={{ fontSize: '50px', color: 'red' }}></i>
-        <p className="text-center">Todavia no cargaste ninguna mascota</p>
+        <p className="text-center">Todavía no cargaste ninguna mascota</p>
       </div>
     );
   }
 
-  // Mostrar las mascotas filtradas
+  // Mostrar las mascotas filtradas en el carrusel
   return (
     <div className="container mt-4">
       <div className="row">
-        {filterPetId.map((item) => (
-          <div key={item.id} className="col-md-4 mb-4">
-            <Card pet={item} />
-          </div>
-        ))}
+        {/* Pasa el array de mascotas al carrusel */}
+        <EmblaCarousel pet={filterPetId} options={{ loop: true, speed: 5 }} />
       </div>
     </div>
   );
 };
+
 
 export default PetCard;

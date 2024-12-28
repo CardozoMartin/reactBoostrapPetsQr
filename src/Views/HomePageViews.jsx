@@ -16,7 +16,7 @@ const HomePageViews = () => {
   const [getPet, setGetPet] = useState(false);
   const [isDatosUser, setIsDatosUser] = useState(false);
   const [isEditPet, setIsEditPet] = useState(false);
-  console.log(user);
+  
   return (
     <>
 
@@ -87,6 +87,12 @@ const HomePageViews = () => {
         </section>
 
       }
+
+      {!isLoggedIn &&
+        <section>
+          <LoginPageViews></LoginPageViews>
+        </section>
+      }
       {!isLoggedIn &&
 
         <section>
@@ -98,7 +104,7 @@ const HomePageViews = () => {
                     className="col-xl-5 col-lg-6  d-flex justify-content-center align-items-stretch"
                     data-aos="fade-right"
                   >
-                    <img src={imgPet2} alt="" className="img-fluid" />
+                    <img src={imgPet2} alt="" className="img-fluid w-50" />
                   </div>
 
                   <div
@@ -167,11 +173,7 @@ const HomePageViews = () => {
           </article>
         </section>
       }
-      {!isLoggedIn &&
-        <section>
-          <LoginPageViews></LoginPageViews>
-        </section>
-      }
+
       {isLoggedIn &&
         <section>
           <img src={imgPet3} alt="" className="img-fluid w-25 mx-auto d-block" />
