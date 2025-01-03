@@ -4,7 +4,9 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const postCommentFn = async (data) => {
   const formData = new FormData();
-  formData.append("userName", data.userName);
+  formData.append("name", data.name);
+  formData.append("surname", data.surname);
+
   formData.append("comments", data.comments);
   if (data.image) {
     formData.append("image", data.image);

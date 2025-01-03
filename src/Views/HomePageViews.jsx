@@ -14,13 +14,14 @@ import { usePet } from "../Components/Store/UsePet";
 
 const HomePageViews = () => {
   const { isLoggedIn, logout, user } = useSession();
+  console.log("🚀 ~ HomePageViews ~ user:", user)
 
   const [getPet, setGetPet] = useState(false);
   const [isDatosUser, setIsDatosUser] = useState(false);
   const [isEditPet, setIsEditPet] = useState(false);
   const { isAddPet, setIsAddPet, setPetToEdit } = usePet();
 
-  console.log("Estado inicial:", { isLoggedIn, isAddPet });
+  
 
   return (
     <>
@@ -69,7 +70,7 @@ const HomePageViews = () => {
               <button
                 className="btn btn-danger mx-2"
                 onClick={() => {
-                  console.log("Cerrando formulario de agregar mascota");
+                  
                   setIsAddPet(false);
                   setPetToEdit(null);
                 }}
@@ -80,7 +81,7 @@ const HomePageViews = () => {
               <button
                 className="btn btn-primary mx-2"
                 onClick={() => {
-                  console.log("Abriendo formulario de agregar mascota");
+                  
                   setIsAddPet(true);
                   setPetToEdit(null);
                 }}
@@ -97,13 +98,13 @@ const HomePageViews = () => {
           <article>
             {isAddPet ? (
               <>
-                {console.log("Renderizando FormPets")} 
+                
                 <FormPets />
               </>
             ) : (
               <>
-                {console.log("Renderizando PetGallery")} 
-                <PetGallery />
+                
+                {""}
               </>
             )}
           </article>

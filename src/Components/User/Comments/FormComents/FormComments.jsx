@@ -11,6 +11,7 @@ import imgQR from "../../../../img/Comments/imagQR.png"
 
 const FormCommets = () => {
     const { user } = useSession();
+
     const { register, handleSubmit, reset, formState: { errors }, setError } = useForm();
     const [image, setImage] = useState(null);
     const [imageError, setImageError] = useState('');
@@ -34,21 +35,19 @@ const FormCommets = () => {
     });
 
     const onSubmit = (data) => {
-        if (!image) {
-            setImageError('Por favor, selecciona una imagen antes de enviar.');
-            return;
-        }
-
+        // Ya no es necesario validar si hay una imagen
         Swal.showLoading();
         const commentData = {
             ...data,
             userID: user.id,
-            userName: user.firstname,
-            image: image,
+            name: user.name,
+            surname: user.surname,
+            image: image || null, // Si no hay imagen, se envía null
         };
-
+        console.log(commentData);
         postComment(commentData);
     };
+    
 
     const handleImageChange = (newImage) => {
         setImage(newImage);
@@ -74,7 +73,7 @@ const FormCommets = () => {
                                         register={register}
                                         id="comments"
                                         name="comments"
-                                        error={!!errors.comments}
+                                        error={errors.comments}
                                         errorMessage={errors.comments?.message}
                                         className="form-control"
                                         options={{

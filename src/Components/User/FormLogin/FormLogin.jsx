@@ -12,6 +12,9 @@ import Input from "../../Utils/input/Input";
 
 const FormLogin = () => {
   const { login } = useSession();
+  
+  
+  
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors }, } = useForm();
 
@@ -47,7 +50,6 @@ const FormLogin = () => {
   const onSubmit = (data) => {
     if (!isLoading) {
       Swal.showLoading();
-      console.log(data)
       postLogin(data);
     }
   };

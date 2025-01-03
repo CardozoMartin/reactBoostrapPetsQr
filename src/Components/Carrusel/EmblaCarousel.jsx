@@ -27,12 +27,19 @@ const EmblaCarousel = ({ comments, options, pets }) => {
                         {comments.map((comment, index) => (
                             <div className="embla__slide m-3" key={index}>
                                 <div className="card o-hidden border-0 shadow-lg cardC">
-                                    <img src={comment.image} alt="Random" className="card-img-top rounded-lg img-fixed-size img-fluid " />
+                                    {comment.image && (
+                                        <img
+                                            src={comment.image}
+                                            alt="Random"
+                                            className="card-img-top rounded-lg img-fixed-size img-fluid"
+                                        />
+                                    )}
                                     <div className="card-body">
                                         <h5 className="card-title text-center">
                                             <span className="badge bg-info text-dark">PetQr</span>
                                         </h5>
-                                        <h4 className="card-subtitle mb-2 text-muted text-center">{comment.userName}</h4>
+                                        <h5 className='fw-bolder'>Nombre : {comment.name} {" "} {comment.surname}</h5>
+                                        
                                         <p className="card-text">{comment.comments}</p>
                                     </div>
                                 </div>
@@ -45,8 +52,6 @@ const EmblaCarousel = ({ comments, options, pets }) => {
                     <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} className="btn btn-primary m-2" />
                     <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} className="btn btn-primary" />
                 </div>
-
-                
             </div>
         </section>
     );
