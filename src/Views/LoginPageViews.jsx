@@ -22,7 +22,13 @@ const LoginPageViews = () => {
                  <FormLogin></FormLogin>
                  
                   
-                 <p className=' bolder '>no tenes cuenta? <Link to={"/register"} className=' bolder'>Registrate</Link></p>
+                 <div className='text-center'>
+                  <Link to={"/recoveryPass"} className=' bolder'>Olvidaste tu contraseña?</Link>
+                  <br />
+                  <Link to={"/register"} className='btn btn-success bolder'>Crear una cuenta nueva</Link>
+                 </div>
+                
+
                 </div>
               </div>
             </div>

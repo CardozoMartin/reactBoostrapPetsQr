@@ -104,6 +104,19 @@ const Navbar = () => {
                   Ayuda
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link active fw-bolder text-warning"
+                      : "nav-link text-white"
+                  }
+                  to="/contacto"
+                  onClick={closeMenu} // Cierra el menú cuando se hace clic
+                >
+                  Contacto
+                </NavLink>
+              </li>
             </ul>
             {!isLoggedIn ? (
               <Link to="/login" className="btn btn-outline-warning ms-2" onClick={closeMenu}>

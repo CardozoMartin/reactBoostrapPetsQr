@@ -48,7 +48,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact mt-5">
       <div className="container">
         <div className="section-title" data-aos="fade-up">
           <h2>Contacto</h2>

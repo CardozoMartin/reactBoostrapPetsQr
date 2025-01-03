@@ -67,12 +67,20 @@ const CardPetViews = () => {
               <p className="mt-3">{pet.data.content}</p>
               <h4 className="mt-4">INFORMACION DE CONTACTO</h4>
               <ButtonGroup pet={pet} />
-              <div className="">
-                <a className='btn btn-ig'  href={`https://www.instagram.com/${pet.data.instagram}/`} target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-instagram">
-                    </i> Instagram
-                </a>
-              </div>
+
+              {pet.data.instagram && (
+                <div className="mt-3">
+                  <a
+                    className="btn btn-ig"
+                    href={`https://www.instagram.com/${pet.data.instagram}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="bi bi-instagram"></i> Instagram
+                  </a>
+                </div>
+              )}
+             
               <p className="mt-3 font-weight-bold">Dirección: {pet.data.direccion}</p>
             </div>
             <GoogleMapEmbed address={pet.data.direccion} />

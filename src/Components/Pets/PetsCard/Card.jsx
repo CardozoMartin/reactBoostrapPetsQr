@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Card = (props) => {
   const { pet } = props;
-  const { setPetToEdit } = usePet();
+  const { setPetToEdit, setIsAddPet } = usePet();
   const [isQR, setIsQR] = useState(false);
   const queryClient = useQueryClient();
 
@@ -43,7 +43,10 @@ const Card = (props) => {
   };
 
   const handleEdit = () => {
+    // Primero establecemos la mascota a editar
     setPetToEdit(pet);
+    // Luego activamos la visibilidad del formulario
+    setIsAddPet(true);
   };
 
   return (

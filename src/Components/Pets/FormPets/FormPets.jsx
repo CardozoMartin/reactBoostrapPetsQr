@@ -136,12 +136,12 @@ const FormPets = () => {
                   name='name'
                   placeholder=''
                   register={register}
-                  error={!!errors?.name}
+                  error={errors?.name}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 25,
-                    required: true,
+                    required: "Este campo es obligatorio",
                   }}
                 />
               </div>
@@ -149,8 +149,8 @@ const FormPets = () => {
                 <label htmlFor="tipo" className="form-label">Tipo</label>
                 <select
                   id="tipo"
-                  className="form-select"
-                  {...register("tipo")}
+                  className={`form-select ${errors.tipo ? 'is-invalid' : ''}`}
+                  {...register("tipo", { required: "Este campo es obligatorio" })}
                 >
                   <option value="">Seleccione el tipo de mascota</option>
                   <option value="Perro">Perro</option>
@@ -159,7 +159,9 @@ const FormPets = () => {
                   <option value="Caballo">Caballo</option>
                   <option value="Hamster">Hamster</option>
                 </select>
+                {errors.tipo && <div className="invalid-feedback">{errors.tipo.message}</div>}
               </div>
+
               <div className="col-12 col-md-6">
                 <label htmlFor="raza" className="form-label">Raza</label>
                 <Input
@@ -167,12 +169,12 @@ const FormPets = () => {
                   name='raza'
                   placeholder=''
                   register={register}
-                  error={!!errors?.raza}
+                  error={errors?.raza}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 25,
-                    required: true,
+                    required: "Este campo es obligatorio",
                   }}
                 />
               </div>
@@ -183,12 +185,11 @@ const FormPets = () => {
                   name='content'
                   placeholder=''
                   register={register}
-                  error={!!errors?.content}
+                  error={errors.content}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 2555,
-                    required: true,
                   }}
                 />
               </div>
@@ -207,12 +208,12 @@ const FormPets = () => {
                   name='direccion'
                   placeholder=''
                   register={register}
-                  error={!!errors?.direccion}
+                  error={errors?.direccion}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 255,
-                    required: true,
+                    required: "Este campo es obligatorio",
                   }}
                 />
               </div>
@@ -223,12 +224,12 @@ const FormPets = () => {
                   name='numberphone'
                   placeholder=''
                   register={register}
-                  error={!!errors?.numberphone}
+                  error={errors?.numberphone}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 25,
-                    required: true,
+                    required: "Este campo es obligatorio",
                   }}
                 />
               </div>
@@ -239,12 +240,11 @@ const FormPets = () => {
                   name='facebook'
                   placeholder=''
                   register={register}
-                  error={!!errors?.facebook}
+                  error={errors.facebook}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 50,
-                    required: true,
                   }}
                 />
               </div>
@@ -255,12 +255,11 @@ const FormPets = () => {
                   name='instagram'
                   placeholder=''
                   register={register}
-                  error={!!errors?.instagram}
+                  error={errors.instagram}
                   className='mb-2'
                   options={{
                     minLength: 3,
                     maxLength: 50,
-                    required: true,
                   }}
                 />
               </div>

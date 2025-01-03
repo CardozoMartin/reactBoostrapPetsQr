@@ -9,6 +9,9 @@ import HelpPageViews from './Views/HelpPageViews'
 import { Toaster } from 'sonner'
 import CardPetViews from './Views/CardPetViews'
 import { useSession } from './Components/Store/UseSession'
+import Contact from './Components/User/Contact/Contact'
+import VerifyViews from './Views/VerifyViews'
+import RecoveryPassViews from './Views/RecoveryPassViews'
 
 const Router = () => {
   const { isLoggedIn, logout, user } = useSession();
@@ -25,6 +28,12 @@ const Router = () => {
         <Route exact path="/register" element={isLoggedIn ?  <Navigate to='/' /> :<RegisterPageViews></RegisterPageViews>} />
         <Route exact path="/help" element={<HelpPageViews></HelpPageViews>} />
         <Route exact path="/pet-details/:petId" element={<CardPetViews />}></Route>
+        <Route exact path="/contacto" element={<Contact />}></Route>
+        <Route exact path="/verify-succes" element={<VerifyViews/>}></Route>
+        <Route exact path="/recoveryPass" element={<RecoveryPassViews/>}></Route>
+
+
+
         
      
   

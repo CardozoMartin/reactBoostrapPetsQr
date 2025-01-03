@@ -24,5 +24,9 @@ export const useSession = create((set) => ({
   user,
   isLoggedIn,
   login: (newUser) => set({ user: newUser, isLoggedIn: true }),
-  logout: () => set({ user: null, isLoggedIn: false }),
+  logout: () => {
+    sessionStorage.removeItem('token');
+    set({ user: null, isLoggedIn: false });
+  },
+  
 }));
