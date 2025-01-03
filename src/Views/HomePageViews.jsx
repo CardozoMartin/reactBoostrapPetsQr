@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import imgPet from "../img/Home/left.png";
-import imgPet2 from "../img/Home/portrait.png";
 import LoginPageViews from "./LoginPageViews";
 import FormPets from "../Components/Pets/FormPets/FormPets";
 import PetGallery from "../Components/Pets/PetsCard/PetGallery";
 import FormCommets from "../Components/User/Comments/FormComents/FormComments";
 import Commets from "../Components/User/Comments/Comments";
-import Contact from "../Components/User/Contact/Contact";
 import { useSession } from "../Components/Store/UseSession";
 import { Link } from "react-router-dom";
 import imgPet3 from "../img/welcome.svg";
@@ -14,7 +12,7 @@ import { usePet } from "../Components/Store/UsePet";
 
 const HomePageViews = () => {
   const { isLoggedIn, logout, user } = useSession();
-  console.log("🚀 ~ HomePageViews ~ user:", user)
+
 
   const [getPet, setGetPet] = useState(false);
   const [isDatosUser, setIsDatosUser] = useState(false);
@@ -32,16 +30,15 @@ const HomePageViews = () => {
             <div className="row justify-content-between">
               <div className="col-lg-7 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                 <div data-aos="zoom-out">
-                  <h1>
-                    Mantén a tu mascota siempre cerca, con solo un escaneo.
-                    <span>El QR que garantiza su seguridad.</span>
+                  <h1 className="fw-bold "> 
+                    ¡Bienvenido a PetsQR
                   </h1>
-                  <h2>
+                  <h2 className="text-dark">
                     Conéctate con tu mascota de manera fácil y rápida. Descubre cómo nuestro QR para mascotas puede ofrecerte tranquilidad.
                   </h2>
 
                   <div className="text-center text-lg-start">
-                    <Link to={"/register"} className="btn-get-started scrollto">
+                    <Link to={"/register"} className="btn btnDark">
                       Registrate
                     </Link>
                   </div>

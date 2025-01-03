@@ -20,7 +20,7 @@ a{
   color: yellow;
 }
 main {
- 
+ color:#000000;
   margin-bottom: 25px;
   flex: 1 0 auto;
 }
@@ -36,7 +36,40 @@ footer {
   background-color: rgb(95, 14, 170);
   color: black;
 }
+.btnDark{
+  background-color:#ffffff;
+  color: #11090a;
+  border: 3px solid #11090a;
+  width: 200px;
+  font-size: 1.8rem;
+  border-radius: 0 !important;
+  
+  
+}
+.btnDark:hover{
+  background-color: #e6dede;
+  border: 3px solid #11090a;
+  border-radius: 0 !important;
+  
+}
 
+.btn-inicio{
+  background-color: #ffff;
+  color: #11090a;
+  border: 3px solid #11090a;
+  width: 100px;
+  font-size: 1.2rem;
+  border-radius: 0 !important;
+
+}
+.btn-inicio:hover{
+  background-color: #e6dede;
+  color: #11090a!important;
+  border: 3px solid #11090a;
+  border-radius: 0 !important;
+
+
+}
 
 .img-fixed-size {
   width: 400px; /* Cambia el tamaño según tus necesidades */

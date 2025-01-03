@@ -119,7 +119,7 @@ const Navbar = () => {
               </li>
             </ul>
             {!isLoggedIn ? (
-              <Link to="/login" className="btn btn-outline-warning ms-2" onClick={closeMenu}>
+              <Link to="/login" className="btn btn-inicio" onClick={closeMenu}>
                 Ingresar
               </Link>
             ) : (
