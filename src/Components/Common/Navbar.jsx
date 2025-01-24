@@ -1,15 +1,30 @@
-import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useSession } from "../Store/UseSession";
+import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { BsQrCode } from "react-icons/bs";
+import { MdHome, MdHelp, MdContactMail } from "react-icons/md";
+import { useSession } from "../Store/UseSession"; // Asegúrate de tener esta ruta correcta
 import Swal from "sweetalert2";
 import { toast } from "sonner";
 
 const Navbar = () => {
   const { isLoggedIn, logout, user } = useSession();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Estado para controlar si el navbar está abierto o cerrado
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  
+  const isActive = (path) => location.pathname === path;
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const getDynamicTextColor = () => isScrolled ? "text-[#4A4A4A]" : "text-white";
 
   const handleLogout = () => {
     Swal.fire({
@@ -28,99 +43,70 @@ const Navbar = () => {
     });
   };
 
-  // Función para manejar el cierre del menú cuando se hace clic en un enlace
-  const closeMenu = () => {
-    setIsMenuOpen(false);  // Cambia el estado para cerrar el menú
-  };
-
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg position-fixed">
-        <div className="container">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "nav-link active fw-bolder text-warning fs-5"
-                : "nav-link text-white navbar-brand text-white fs-5"
-            }
-          >
-            <i className="bi bi-qr-code-scan ms-2"></i> PetsQr
-          </NavLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded={isMenuOpen ? "true" : "false"} // Usa el estado para el toggle
-            aria-label="Toggle navigation"
-            onClick={() => setIsMenuOpen(!isMenuOpen)} // Cambia el estado cuando se hace clic
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`} id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto ms-2 mb-2 mb-lg-0">
-              {!isLoggedIn && (
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "nav-link active fw-bolder text-warning"
-                        : "nav-link text-white"
-                    }
-                    to="/register"
-                    onClick={closeMenu} // Cierra el menú cuando se hace clic
-                  >
-                    Registro
-                  </NavLink>
-                </li>
-              )}
-              {!isLoggedIn && (
-                <li className="nav-item">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "nav-link active fw-bolder text-warning"
-                        : "nav-link text-white"
-                    }
-                    to="/login"
-                    onClick={closeMenu} // Cierra el menú cuando se hace clic
-                  >
-                    Inicio
-                  </NavLink>
-                </li>
-              )}
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "nav-link active fw-bolder text-warning"
-                      : "nav-link text-white"
-                  }
-                  to="/help"
-                  onClick={closeMenu} // Cierra el menú cuando se hace clic
-                >
-                  Ayuda
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "nav-link active fw-bolder text-warning"
-                      : "nav-link text-white"
-                  }
-                  to="/contacto"
-                  onClick={closeMenu} // Cierra el menú cuando se hace clic
-                >
-                  Contacto
-                </NavLink>
-              </li>
-            </ul>
+    <nav
+      className={`fixed w-full z-50 top-0 left-0 shadow-lg transition-colors duration-300 ${
+        isScrolled ? "bg-transparent" : "bg-orange-600"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link
+              to="/"
+              className={`flex items-center space-x-2 ${getDynamicTextColor()}`}
+            >
+              <BsQrCode className="h-7 w-7" />
+              <span className="text-xl font-bold">PetsQr</span>
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <NavLink
+              to="/"
+              className={({ isActive }) => `transition-colors duration-200 ${
+                isScrolled
+                  ? `${isActive ? "text-[#2E2E2E]" : "text-[#4A4A4A]"} hover:text-[#2E2E2E]`
+                  : `${isActive ? "text-yellow-400" : "text-white"} hover:text-yellow-400`
+              }`}
+            >
+              Inicio
+            </NavLink>
+            
+            <NavLink
+              to="/ayuda"
+              className={({ isActive }) => `transition-colors duration-200 ${
+                isScrolled
+                  ? `${isActive ? "text-[#2E2E2E]" : "text-[#4A4A4A]"} hover:text-[#2E2E2E]`
+                  : `${isActive ? "text-yellow-400" : "text-white"} hover:text-yellow-400`
+              }`}
+            >
+              Ayuda
+            </NavLink>
+            
+            <NavLink
+              to="/contacto"
+              className={({ isActive }) => `transition-colors duration-200 ${
+                isScrolled
+                  ? `${isActive ? "text-[#2E2E2E]" : "text-[#4A4A4A]"} hover:text-[#2E2E2E]`
+                  : `${isActive ? "text-yellow-400" : "text-white"} hover:text-yellow-400`
+              }`}
+            >
+              Contacto
+            </NavLink>
+
             {!isLoggedIn ? (
-              <Link to="/login" className="btn btn-inicio" onClick={closeMenu}>
-                Ingresar
+              <Link
+                to="/ingresar"
+                className={`transition-colors duration-200 ${
+                  isScrolled
+                    ? "bg-[#4A4A4A] text-white hover:bg-[#2E2E2E]"
+                    : "bg-white text-purple-900 hover:bg-yellow-400"
+                } px-4 py-2 rounded-md font-medium`}
+              >
+                Acceder
               </Link>
             ) : (
               <button
@@ -131,9 +117,111 @@ const Navbar = () => {
               </button>
             )}
           </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleSidebar}
+              className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-200 ${
+                isScrolled
+                  ? "text-[#4A4A4A] hover:text-[#2E2E2E]"
+                  : "text-white hover:text-yellow-400"
+              }`}
+            >
+              <FaBars className="h-6 w-6" />
+            </button>
+          </div>
         </div>
-      </nav>
-    </header>
+      </div>
+
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-orange-600 transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out z-40`}
+      >
+        <div className="flex items-center justify-between px-4 py-4 bg-orange-800 shadow-md">
+          <button
+            onClick={toggleSidebar}
+            className="text-white hover:text-yellow-400 focus:outline-none"
+          >
+            <FaTimes className="h-6 w-6" />
+          </button>
+          <span className="text-white text-lg font-bold">PetsQr</span>
+        </div>
+
+        <div className="px-4 py-6 space-y-4">
+          <NavLink
+            to="/"
+            className={({ isActive }) => `flex items-center space-x-3 font-bold px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive
+                ? "bg-green-700 text-white"
+                : "text-white hover:bg-yellow-400 hover:text-purple-900"
+            }`}
+            onClick={toggleSidebar}
+          >
+            <MdHome className="h-6 w-6" />
+            <span>Inicio</span>
+          </NavLink>
+          
+          <NavLink
+            to="/ayuda"
+            className={({ isActive }) => `flex items-center space-x-3 font-bold px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive
+                ? "bg-yellow-400 text-white"
+                : "text-white hover:bg-yellow-400 hover:text-purple-900"
+            }`}
+            onClick={toggleSidebar}
+          >
+            <MdHelp className="h-6 w-6" />
+            <span>Ayuda</span>
+          </NavLink>
+          
+          <NavLink
+            to="/contacto"
+            className={({ isActive }) => `flex items-center space-x-3 font-bold px-3 py-2 rounded-md transition-colors duration-200 ${
+              isActive
+                ? "bg-yellow-400 text-white"
+                : "text-white hover:bg-yellow-400 hover:text-purple-900"
+            }`}
+            onClick={toggleSidebar}
+          >
+            <MdContactMail className="h-6 w-6" />
+            <span>Contacto</span>
+          </NavLink>
+
+          <hr className="border-t border-yellow-400 my-6" />
+
+          {!isLoggedIn ? (
+            <Link
+              to="/ingresar"
+              className="block font-bold bg-white text-orange-900 px-4 py-2 rounded-md font-medium hover:bg-yellow-400 transition-colors duration-200 text-center"
+              onClick={toggleSidebar}
+            >
+              Acceder
+            </Link>
+          ) : (
+            <button
+              onClick={() => {
+                toggleSidebar();
+                handleLogout();
+              }}
+              className="w-full font-bold bg-red-600 text-white px-4 py-2 rounded-md font-medium hover:bg-red-700 transition-colors duration-200 text-center"
+            >
+              Salir
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {isSidebarOpen && (
+        <div
+          onClick={toggleSidebar}
+          className="fixed inset-0 bg-black bg-opacity-50 z-30"
+        ></div>
+      )}
+    </nav>
   );
 };
 
